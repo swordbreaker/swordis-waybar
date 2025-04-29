@@ -257,6 +257,19 @@ tooltip {
     color: @error;
 }
 
+/* Custom module - Headset control */
+#custom-headset {
+    color: #f9e2af;
+    margin-right: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+}
+
+#custom-headset:hover {
+    background: #1e1e2e;
+}
+
 /* Keep these unchanged */
 #workspaces,
 #taskbar {

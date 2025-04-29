@@ -27,7 +27,7 @@
     "modules-right": [
         "group/controls",
         "tray",
-        "battery",
+        "custom/headset",
     ],
     // sourced from modules based on config.ctl //
     "cpu": {
@@ -245,6 +245,37 @@
         "rotate": 0,
         "on-click": "keybinds_hint.sh"
     },
+    "custom/cliphist": {
+        "format": "{}",
+        "rotate": 0,
+        "exec": "echo ; echo 󰅇 clipboard history",
+        "on-click": "sleep 0.1 && /home/swordi/.config/hypr/scripts/cliphist.sh",
+        "on-click-right": "sleep 0.1 && cliphist.sh -d",
+        "on-click-middle": "sleep 0.1 && cliphist.sh -w",
+        "interval": 86400, // once every day
+        "tooltip": true
+    },
+    "custom/headset": {
+        "return-type": "json",
+        "format": "{}",
+        "rotate": 0,
+        "exec": "~/.config/waybar/scripts/headsetcontrol.sh json",
+        "on-click": "~/.config/waybar/scripts/headsetcontrol.sh increase",
+        "on-click-right": "~/.config/waybar/scripts/headsetcontrol.sh decrease", 
+        "on-click-middle": "headsetcontrol -b",
+        "interval": 5, // update every 5 seconds
+        "tooltip": true
+    },
+    "custom/power": {
+        "format": " ",
+        "rotate": 0,
+        "exec": "echo ; echo  logout",
+        "on-click": "logoutlaunch.sh 2",
+        "on-click-right": "logoutlaunch.sh 1",
+        "interval": 86400, // once every day
+        "tooltip": true
+    },
+
     "privacy": {
         "icon-size": 12,
         "icon-spacing": 5,
