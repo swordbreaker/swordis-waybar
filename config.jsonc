@@ -28,6 +28,7 @@
         "group/controls",
         "tray",
         "custom/headset",
+        "custom/notification"
     ],
     // sourced from modules based on config.ctl //
     "cpu": {
@@ -180,6 +181,26 @@
         "on-scroll-down": "brightnesscontrol.sh d 1",
         "min-length": 6
     },
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-none": "",
+            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
     "network": {
         "tooltip": true,
         "format-wifi": " ",
@@ -216,7 +237,7 @@
                 ""
             ]
         }
-    },  
+    },
     "pulseaudio#microphone": {
         "format": "{format_source}",
         "rotate": 0,
@@ -261,7 +282,7 @@
         "rotate": 0,
         "exec": "~/.config/waybar/scripts/headsetcontrol.sh json",
         "on-click": "~/.config/waybar/scripts/headsetcontrol.sh increase",
-        "on-click-right": "~/.config/waybar/scripts/headsetcontrol.sh decrease", 
+        "on-click-right": "~/.config/waybar/scripts/headsetcontrol.sh decrease",
         "on-click-middle": "headsetcontrol -b",
         "interval": 5, // update every 5 seconds
         "tooltip": true
@@ -275,7 +296,6 @@
         "interval": 86400, // once every day
         "tooltip": true
     },
-
     "privacy": {
         "icon-size": 12,
         "icon-spacing": 5,
@@ -332,7 +352,6 @@
             "pulseaudio",
             "pulseaudio#microphone",
             "custom/updates",
-            "custom/keybindhint",
             "privacy"
         ]
     },
@@ -375,7 +394,6 @@
         "interval": 86400, // once every day
         "tooltip": true
     },
-
     "group/media-controls": {
         "orientation": "horizontal",
         "modules": [
@@ -384,7 +402,6 @@
             "custom/next-media",
         ]
     },
-
     "custom/prev-media": {
         "format": " {} ",
         "exec": "echo ◁;",
@@ -392,7 +409,6 @@
         "on-click": "waybar-mpris --send prev",
         "interval": 1,
     },
-
     "custom/next-media": {
         "format": " {} ",
         "exec": "echo ▷;",
@@ -400,7 +416,6 @@
         "exec-if": "waybar-mpris --send list | grep -q 'Playing: true'",
         "interval": 1,
     },
-
     "custom/waybar-mpris": {
         "return-type": "json",
         "exec": "waybar-mpris --position --autofocus",
@@ -410,7 +425,6 @@
         "on-scroll-down": "waybar-mpris --send player-prev",
         "escape": true,
     },
-
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
         "format-disconnected": "Disconnected ",
