@@ -108,7 +108,6 @@
         }
     },
     "hyprland/workspaces": {
-        "disable-scroll": true,
         "rotate": 0,
         "all-outputs": true,
         "active-only": false,
@@ -375,31 +374,12 @@
         "interval": 86400, // once every day
         "tooltip": true
     },
-    "custom/cliphist": {
-        "format": "{}",
-        "rotate": 0,
-        "exec": "echo ; echo 󰅇 clipboard history",
-        "on-click": "sleep 0.1 && /home/swordi/.config/hypr/scripts/cliphist.sh",
-        "on-click-right": "sleep 0.1 && cliphist.sh -d",
-        "on-click-middle": "sleep 0.1 && cliphist.sh -w",
-        "interval": 86400, // once every day
-        "tooltip": true
-    },
-    "custom/power": {
-        "format": " ",
-        "rotate": 0,
-        "exec": "echo ; echo  logout",
-        "on-click": "logoutlaunch.sh 2",
-        "on-click-right": "logoutlaunch.sh 1",
-        "interval": 86400, // once every day
-        "tooltip": true
-    },
     "group/media-controls": {
         "orientation": "horizontal",
         "modules": [
             "custom/prev-media",
             "custom/waybar-mpris",
-            "custom/next-media",
+            "custom/next-media"
         ]
     },
     "custom/prev-media": {
@@ -424,6 +404,8 @@
         "on-scroll-up": "waybar-mpris --send player-next",
         "on-scroll-down": "waybar-mpris --send player-prev",
         "escape": true,
+        "max-length": 60,
+        "tooltip": true,
     },
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
